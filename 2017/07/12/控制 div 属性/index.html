@@ -1,0 +1,716 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,CSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="无意中看到某个大牛🐮 写的JavaScript 实例，正好 JavaScript 原生基础不是很扎实，于是，开始了仿写之路。 第一个实例是点击不同的按钮来控制 div 的宽、高、背景色等样式。 Demo 地址： 注：最终的代码是参考大牛源码修改而成，文中的知识点也是参考多方资料后整理而成。">
+<meta name="keywords" content="JavaScript,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="控制 div 属性">
+<meta property="og:url" content="http://yoursite.com/2017/07/12/控制 div 属性/index.html">
+<meta property="og:site_name" content="Fangdi">
+<meta property="og:description" content="无意中看到某个大牛🐮 写的JavaScript 实例，正好 JavaScript 原生基础不是很扎实，于是，开始了仿写之路。 第一个实例是点击不同的按钮来控制 div 的宽、高、背景色等样式。 Demo 地址： 注：最终的代码是参考大牛源码修改而成，文中的知识点也是参考多方资料后整理而成。">
+<meta property="og:image" content="http://ocepym0o2.bkt.clouddn.com/%E4%B8%80%E8%84%B8%E6%87%B5%E9%80%BC20160912.jpg">
+<meta property="og:updated_time" content="2017-07-12T09:55:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="控制 div 属性">
+<meta name="twitter:description" content="无意中看到某个大牛🐮 写的JavaScript 实例，正好 JavaScript 原生基础不是很扎实，于是，开始了仿写之路。 第一个实例是点击不同的按钮来控制 div 的宽、高、背景色等样式。 Demo 地址： 注：最终的代码是参考大牛源码修改而成，文中的知识点也是参考多方资料后整理而成。">
+<meta name="twitter:image" content="http://ocepym0o2.bkt.clouddn.com/%E4%B8%80%E8%84%B8%E6%87%B5%E9%80%BC20160912.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/12/控制 div 属性/"/>
+
+
+
+
+
+  <title>控制 div 属性 | Fangdi</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fangdi</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/12/控制 div 属性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fang Di">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fangdi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">控制 div 属性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-12T16:50:30+08:00">
+                2017-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>无意中看到某个大牛🐮 写的<a href="http://www.fgm.cc/learn/" target="_blank" rel="external">JavaScript 实例</a>，正好 JavaScript 原生基础不是很扎实，于是，开始了仿写之路。</p>
+<p>第一个实例是点击不同的按钮来控制 div 的宽、高、背景色等样式。</p>
+<p>Demo 地址：</p>
+<p>注：最终的代码是参考大牛源码修改而成，文中的知识点也是参考多方资料后整理而成。</p>
+<div align="center"><img src="http://ocepym0o2.bkt.clouddn.com/%E4%B8%80%E8%84%B8%E6%87%B5%E9%80%BC20160912.jpg" alt="Image of Yaktocat"></div>
+
+<a id="more"></a>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>控制 div 属性<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">        .button_group &#123; text-align: center; &#125;</div><div class="line">        #box &#123; width: 100px; height: 100px; background: #000; margin: 10px auto; display: block; &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"button_group"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"变宽"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"变高"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"变色"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"隐藏"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"重置"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="xml"></span></div><div class="line">        var changeStyle = function(elem, attr, value) &#123;</div><div class="line">            elem.style[attr] = value;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        window.onload = function() &#123;</div><div class="line">            var attr = ['width', 'height', 'background', 'display', 'display']</div><div class="line">                value = ['200px', '200px', '#f00', 'none', 'block'];</div><div class="line"></div><div class="line">            var button = document.getElementsByTagName('input')</div><div class="line">                box = document.getElementById('box');</div><div class="line"></div><div class="line">            for (var i = 0; i <span class="tag">&lt; <span class="attr">button.length</span>; <span class="attr">i</span>++) &#123;</span></div><div class="line">                <span class="attr">button</span>[<span class="attr">i</span>]<span class="attr">.index</span> = <span class="string">i;</span></div><div class="line">                <span class="attr">button</span>[<span class="attr">i</span>]<span class="attr">.onclick</span> = <span class="string">function()</span> &#123;</div><div class="line">                    <span class="attr">this.index</span> == <span class="string">button.length</span> <span class="attr">-</span> <span class="attr">1</span> &amp;&amp; (<span class="attr">box.style.cssText</span> = <span class="string">''</span>);</div><div class="line">                    <span class="attr">changeStyle</span>(<span class="attr">box</span>, <span class="attr">attr</span>[<span class="attr">this.index</span>], <span class="attr">value</span>[<span class="attr">this.index</span>]);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><h4 id="this-index-button-length-1-amp-amp-box-style-cssText-39-39"><a href="#this-index-button-length-1-amp-amp-box-style-cssText-39-39" class="headerlink" title="this.index == button.length - 1 &amp;&amp; (box.style.cssText = &#39;&#39;);"></a><code>this.index == button.length - 1 &amp;&amp; (box.style.cssText = &#39;&#39;);</code></h4><h5 id="cssText-属性"><a href="#cssText-属性" class="headerlink" title="cssText 属性"></a>cssText 属性</h5><p>元素节点对象的 <code>style</code> 对象，有一个 <code>cssText</code> 属性，可以读写或删除整个样式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'box'</span>).style.cssText = <span class="string">'background-color: #f00;'</span></div></pre></td></tr></table></figure>
+<p>操作 CSS 样式的另外几种方式：</p>
+<ol>
+<li><p>使用网页元素节点的 <code>getAttribute</code> 方法、<code>setAttribute</code> 方法和 <code>removeAttribute</code> 方法，直接读写或删除网页元素的 <code>style</code> 属性。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'box'</span>).setAttribute(</div><div class="line">    <span class="string">'style'</span>,</div><div class="line">    <span class="string">'background-color: #f00;'</span> + <span class="string">'border: 1px solid #f00;'</span></div><div class="line">);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'box'</span>).getAttribute(<span class="string">'style'</span>);       <span class="comment">// background-color: #f00;border: 1px solid #f00;</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'box'</span>).removeAttribute(<span class="string">'style'</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>每一个网页元素对应一个 DOM 节点对象，这个对象的 <code>style</code> 属性可以直接操作，用来读写行内 CSS 样式。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> boxStyle = <span class="built_in">document</span>.getElementById(<span class="string">'box'</span>).style;</div><div class="line"></div><div class="line">boxStyle.backgroundColor = <span class="string">'#f00'</span>;</div><div class="line"><span class="comment">// boxStyle['background-color'] = '#f00';</span></div><div class="line"></div><div class="line">boxStyle.border = <span class="string">'1px solid #000'</span>;</div><div class="line"></div><div class="line">boxStyle.backgroundColor        <span class="comment">// rgb(255, 0, 0)</span></div><div class="line">boxStyle.border                 <span class="comment">// 1px solid rgb(0, 0, 0)</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>style</code> 属性的值是一个对象，这个对象所包含的属性与 CSS 规则一一对应。属性若使用「点符号」，则名字需要改写，改写规则就是将横杠从 CSS 属性名中去除，然后横杠后的第一个字母大写，如：<code>background-color</code> 写成 <code>backgroundColor</code>。</p>
+</blockquote>
+</li>
+<li><p><code>style</code> 对象的 <code>getPropertyValue(propertyName)</code> 方法、<code>setProperty(propertyName, value)</code> 方法和 <code>removeProperty(propertyName)</code> 方法，用来读写行内 CSS 规则。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'box'</span>).style.setProperty(<span class="string">'background-color'</span>, <span class="string">'#f00'</span>);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'box'</span>).style.getPropertyValue(<span class="string">'background-color'</span>);          <span class="comment">// rgb(255, 0, 0)</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'box'</span>).style.removeProperty(<span class="string">'background-color'</span>);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="amp-amp-符号"><a href="#amp-amp-符号" class="headerlink" title="&amp;&amp; 符号"></a>&amp;&amp; 符号</h5><ul>
+<li><p><code>a &amp;&amp; b</code>：如果 <code>a</code> 返回 <code>true</code>，则执行 <code>b</code>；如果 <code>a</code> 返回 <code>false</code>，则不执行 <code>b</code>；</p>
+</li>
+<li><p><code>a || b</code>：如果 <code>a</code> 返回 <code>true</code>，则不执行 <code>b</code>；如果 <code>a</code> 返回 <code>false</code>，则执行 <code>b</code>；</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'Tom'</span>;</div><div class="line"></div><div class="line">(<span class="number">1</span> == <span class="number">1</span>) &amp;&amp; (<span class="number">2</span> == <span class="number">1</span>) &amp;&amp; (name = <span class="string">'Nick'</span>);        <span class="comment">// name =&gt; Tom</span></div><div class="line"></div><div class="line">(<span class="number">1</span> == <span class="number">1</span>) &amp;&amp; (name = <span class="string">'Nick'</span>);                    <span class="comment">// name =&gt; Nick</span></div></pre></td></tr></table></figure>
+<p>故，<code>this.index == button.length - 1 &amp;&amp; (box.style.cssText = &#39;&#39;);</code> 等同于 <code>if (this.index == button.length - 1) { box.style.cssText = &#39;&#39;; }</code>。若 <code>this.index</code> 的值为最后一个索引（即重置按钮），则清空样式。</p>
+<h4 id="oBtn-i-index-i"><a href="#oBtn-i-index-i" class="headerlink" title="oBtn[i].index = i;"></a><code>oBtn[i].index = i;</code></h4><p><code>index</code> 是定义在每个按钮（<code>input</code> 节点）上的一个值，之所以不直接使用 <code>oBtn[i].index</code>，是因为当点击按钮，执行 onclick 事件的时候，循环已经结束，此时的 i 值为 <code>button.length - 1</code>，故使用自定义属性的方式来解决，也可使用闭包的方式，将 for 循环中的 i 值保存在内存中，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; button.length; i++) &#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span> (<span class="params">cur</span>) </span>&#123;</div><div class="line">        button[cur].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            cur == button.length - <span class="number">1</span> &amp;&amp; (box.style.cssText = <span class="string">''</span>);</div><div class="line">            changeStyle(box, attr[cur], value[cur]);</div><div class="line">        &#125;</div><div class="line">    &#125;)(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><p><a href="http://javascript.ruanyifeng.com/dom/css.html#toc2" target="_blank" rel="external">http://javascript.ruanyifeng.com/dom/css.html#toc2</a></p>
+</li>
+<li><p><a href="http://wiki.jikexueyuan.com/project/brief-talk-js/event-binding.html" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/brief-talk-js/event-binding.html</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/12/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Fang Di" />
+          <p class="site-author-name" itemprop="name">Fang Di</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点"><span class="nav-number">2.</span> <span class="nav-text">知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#this-index-button-length-1-amp-amp-box-style-cssText-39-39"><span class="nav-number">2.1.</span> <span class="nav-text">this.index == button.length - 1 && (box.style.cssText = '');</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cssText-属性"><span class="nav-number">2.1.1.</span> <span class="nav-text">cssText 属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#amp-amp-符号"><span class="nav-number">2.1.2.</span> <span class="nav-text">&& 符号</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#oBtn-i-index-i"><span class="nav-number">2.2.</span> <span class="nav-text">oBtn[i].index = i;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fang Di</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
