@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Fangdi">
 <meta property="og:description" content="无意中看到某个大牛🐮 写的JavaScript 实例，正好 JavaScript 原生基础不是很扎实，于是，开始了仿写之路。 第一个实例是点击不同的按钮来控制 div 的宽、高、背景色等样式。 代码地址：Github Demo 地址：控制 div 属性 注：最终的代码是参考大牛源码修改而成，文中的知识点也是参考多方资料后整理而成。">
 <meta property="og:image" content="http://ocepym0o2.bkt.clouddn.com/%E4%B8%80%E8%84%B8%E6%87%B5%E9%80%BC2.jpg">
-<meta property="og:updated_time" content="2017-07-14T02:28:33.000Z">
+<meta property="og:updated_time" content="2017-07-14T02:33:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="控制 div 属性">
 <meta name="twitter:description" content="无意中看到某个大牛🐮 写的JavaScript 实例，正好 JavaScript 原生基础不是很扎实，于是，开始了仿写之路。 第一个实例是点击不同的按钮来控制 div 的宽、高、背景色等样式。 代码地址：Github Demo 地址：控制 div 属性 注：最终的代码是参考大牛源码修改而成，文中的知识点也是参考多方资料后整理而成。">
@@ -358,9 +358,9 @@
 <h4 id="oBtn-i-index-i"><a href="#oBtn-i-index-i" class="headerlink" title="oBtn[i].index = i;"></a><code>oBtn[i].index = i;</code></h4><p><code>index</code> 是定义在每个按钮（<code>input</code> 节点）上的一个值，之所以不直接使用 <code>oBtn[i].index</code>，是因为当点击按钮，执行 onclick 事件的时候，循环已经结束，此时的 i 值为 <code>button.length - 1</code>，故使用自定义属性的方式来解决，也可使用闭包的方式，将 for 循环中的 i 值保存在内存中，代码如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; button.length; i++) &#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span> (<span class="params">cur</span>) </span>&#123;</div><div class="line">        button[cur].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            cur == button.length - <span class="number">1</span> &amp;&amp; (box.style.cssText = <span class="string">''</span>);</div><div class="line">            changeStyle(box, attr[cur], value[cur]);</div><div class="line">        &#125;</div><div class="line">    &#125;)(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><p><a href="http://javascript.ruanyifeng.com/dom/css.html#toc2" target="_blank" rel="external">http://javascript.ruanyifeng.com/dom/css.html#toc2</a></p>
+<li><p><a href="http://javascript.ruanyifeng.com/dom/css.html#toc2" target="_blank" rel="external">阮一峰 CSS 操作</a></p>
 </li>
-<li><p><a href="http://wiki.jikexueyuan.com/project/brief-talk-js/event-binding.html" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/brief-talk-js/event-binding.html</a></p>
+<li><p><a href="http://wiki.jikexueyuan.com/project/brief-talk-js/event-binding.html" target="_blank" rel="external">极客学院 浅谈 JavaScript 之事件绑定</a></p>
 </li>
 </ul>
 
