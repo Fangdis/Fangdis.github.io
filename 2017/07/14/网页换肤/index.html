@@ -1,0 +1,731 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,CSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="无意中看到某个大牛🐮 写的JavaScript 实例，正好 JavaScript 原生基础不是很扎实，于是，开始了仿写之路。 第二个实例是网页换肤，通过点击不同的按钮来控制网页样式。 代码地址：Github Demo 地址：Demo 注：最终的代码是参考大牛源码修改而成，文中的知识点也是参考多方资料后整理而成。">
+<meta name="keywords" content="JavaScript,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网页换肤">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/网页换肤/index.html">
+<meta property="og:site_name" content="Fangdi">
+<meta property="og:description" content="无意中看到某个大牛🐮 写的JavaScript 实例，正好 JavaScript 原生基础不是很扎实，于是，开始了仿写之路。 第二个实例是网页换肤，通过点击不同的按钮来控制网页样式。 代码地址：Github Demo 地址：Demo 注：最终的代码是参考大牛源码修改而成，文中的知识点也是参考多方资料后整理而成。">
+<meta property="og:image" content="http://ocepym0o2.bkt.clouddn.com/%E4%B8%80%E8%84%B8%E6%87%B5%E9%80%BC1.jpg">
+<meta property="og:updated_time" content="2017-07-14T02:18:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网页换肤">
+<meta name="twitter:description" content="无意中看到某个大牛🐮 写的JavaScript 实例，正好 JavaScript 原生基础不是很扎实，于是，开始了仿写之路。 第二个实例是网页换肤，通过点击不同的按钮来控制网页样式。 代码地址：Github Demo 地址：Demo 注：最终的代码是参考大牛源码修改而成，文中的知识点也是参考多方资料后整理而成。">
+<meta name="twitter:image" content="http://ocepym0o2.bkt.clouddn.com/%E4%B8%80%E8%84%B8%E6%87%B5%E9%80%BC1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/14/网页换肤/"/>
+
+
+
+
+
+  <title>网页换肤 | Fangdi</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fangdi</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/14/网页换肤/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fang Di">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ocepym0o2.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fangdi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网页换肤</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T10:14:30+08:00">
+                2017-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>无意中看到某个大牛🐮 写的<a href="http://www.fgm.cc/learn/" target="_blank" rel="external">JavaScript 实例</a>，正好 JavaScript 原生基础不是很扎实，于是，开始了仿写之路。</p>
+<p>第二个实例是网页换肤，通过点击不同的按钮来控制网页样式。</p>
+<p>代码地址：<a href="https://github.com/Fangdis/demo/blob/master/lesson_01/02/02.html" target="_blank" rel="external">Github</a></p>
+<p>Demo 地址：<a href="https://fangdis.github.io/demo/lesson_01/02/02.html" target="_blank" rel="external">Demo</a></p>
+<p>注：最终的代码是参考大牛源码修改而成，文中的知识点也是参考多方资料后整理而成。</p>
+<div align="center"><img src="http://ocepym0o2.bkt.clouddn.com/%E4%B8%80%E8%84%B8%E6%87%B5%E9%80%BC1.jpg" alt="Image of Yaktocat"></div>
+
+<a id="more"></a>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><h4 id="for-var-p-in-button-button-p-className-‘’"><a href="#for-var-p-in-button-button-p-className-‘’" class="headerlink" title="for (var p in button)  button[p].className = ‘’;"></a>for (var p in button)  button[p].className = ‘’;</h4><h5 id="className-属性"><a href="#className-属性" class="headerlink" title="className 属性"></a>className 属性</h5><p><code>className</code> 属性设置或返回元素的 class 属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[<span class="number">0</span>].className;       <span class="comment">// main</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'button-group'</span>).getElementsByTagName(<span class="string">'li'</span>)[<span class="number">1</span>].className = <span class="string">'active'</span>;</div></pre></td></tr></table></figure>
+<p>classList 和 className 的联系和区别：</p>
+<p><code>className</code> 设置 class 属性时，是“一刀切”的。比如：想删除元素的某个类名，需要获取全部类名，在全部类名中找到想删除的，删除后，再将整个类名字符串赋给元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &lt;div class="main active"&gt;...&lt;/div&gt;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[<span class="number">0</span>],</div><div class="line">    classNames = div.className.split(<span class="string">' '</span>),      <span class="comment">// ['main', 'active']</span></div><div class="line">    pos;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; classNames.length; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (classNames[i] === <span class="string">'active'</span>) &#123;           <span class="comment">// 假设删除 active</span></div><div class="line">        pos = i;</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (pos !== <span class="literal">undefined</span>) classNames.splice(pos, <span class="number">1</span>);</div><div class="line"></div><div class="line">div.className = classNames.join(<span class="string">' '</span>);</div></pre></td></tr></table></figure>
+<p>HTML 5 的 <code>classList</code> 就会方便很多，其 API 有：</p>
+<ul>
+<li><p>length：表示类名的个数</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &lt;body class="main active"&gt;...&lt;/body&gt;</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.classList.length;             <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>item(index)：返回 index 索引对应的类名，如果 index 超出范围，则返回 null</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.body.classList.item(<span class="number">1</span>);            <span class="comment">// active</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>add(class)：新增一个类名，如果类名已存在，则添加忽略</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.body.classList.add(<span class="string">'warp'</span>);</div><div class="line"><span class="built_in">document</span>.body.classList.length;             <span class="comment">// 3</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.classList.add(<span class="string">'A'</span>, <span class="string">'B'</span>);      <span class="comment">// 可以同时新增多个类名</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>remove(class)：删除一个类名</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.body.classList.remove(<span class="string">'warp'</span>);</div><div class="line"><span class="built_in">document</span>.body.classList.length;             <span class="comment">// 2</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.classList.remove(<span class="string">'A'</span>, <span class="string">'B'</span>);   <span class="comment">// 可以同时删除多个类名</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>toggle(class)：若类名已存在，则删除，返回 false；若不存在，则添加该类名，返回 true</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.body.classList.toggle(<span class="string">'warp'</span>);</div><div class="line"><span class="built_in">document</span>.body.classList.length;                   <span class="comment">// 3</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.classList.toggle(<span class="string">'active'</span>);</div><div class="line"><span class="built_in">document</span>.body.classList.length;                   <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>contains()：检查是否存在此类名，弱存在，则返回 true，若不存在，则返回 false</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.body.classList.contains(<span class="string">'warp'</span>);         <span class="comment">// true</span></div><div class="line"><span class="built_in">document</span>.body.classList.contains(<span class="string">'Awarp'</span>);        <span class="comment">// false</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>toSting()：等同于 className</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.body.classList.toString() === <span class="built_in">document</span>.body.className</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然而，<code>classList</code> 属性的<a href="http://caniuse.mojijs.com/Home/Html/item/key/classlist/index.html" target="_blank" rel="external">浏览器兼容性</a>并不乐观，希望不久的将来能够完全支持。在 PC 上，可以通过 <code>document.body.classList === undefined</code> 来判断浏览器是否支持。</p>
+<h5 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h5><p><code>for...in</code> 语句用于遍历数组或者对象的属性（对数组或者对象的属性进行循环操作）。</p>
+<p><code>getElementsByTagName()</code> 返回的是一个 <code>NodeList</code>，并不是 <code>Array</code>。MDN 中建议：</p>
+<blockquote>
+<p>不要尝试使用 <code>for...in</code> 或者 <code>for each...in</code> 来遍历一个 <code>NodeList</code> 对象中的对象，因为如果你把 <code>length</code> 和 <code>item</code> 也看成 <code>element</code> 对象的话，<code>NodeList</code> 对象中的 <code>length</code> 和 <code>item</code> 属性也会被遍历出来，这可能会导致你的脚本运行出错。此外，<code>for...in</code> 不能保证访问这些属性的顺序。</p>
+</blockquote>
+<p>将实例中的 <code>for...in</code> 改为 <code>for</code> 循环：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; button.length; i++) &#123;</div><div class="line">    button[i].className = <span class="string">''</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ES6 的 <code>for...of</code> 循环也支持 DOM NodeList 对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> button) &#123;</div><div class="line">    item.className = <span class="string">''</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>计划之后总结一下 JavaScript 的各种循环。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><p><a href="http://www.zhangxinxu.com/wordpress/2013/07/domtokenlist-html5-dom-classlist-%E7%B1%BB%E5%90%8D/" target="_blank" rel="external">HTML5 DOM元素类名相关操作API classList简介</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/NodeList" target="_blank" rel="external">NodeList</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of" target="_blank" rel="external">for…of</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/12/控制 div 属性/" rel="next" title="控制 div 属性">
+                <i class="fa fa-chevron-left"></i> 控制 div 属性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocepym0o2.bkt.clouddn.com/avatar.jpg"
+               alt="Fang Di" />
+          <p class="site-author-name" itemprop="name">Fang Di</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for-var-p-in-button-button-p-className-‘’"><span class="nav-number">1.1.</span> <span class="nav-text">for (var p in button)  button[p].className = ‘’;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#className-属性"><span class="nav-number">1.1.1.</span> <span class="nav-text">className 属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#for…in"><span class="nav-number">1.1.2.</span> <span class="nav-text">for…in</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fang Di</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
